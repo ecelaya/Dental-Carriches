@@ -8,10 +8,10 @@ desktop.ini
 .idea/
 *.swp
 
-# Claude Code local settings (machine-specific, not shared)
+# Claude Code local settings
 .claude/settings.local.json
 
-# Node (in case tooling is added later)
+# Node
 node_modules/
 npm-debug.log*
 package-lock.json
