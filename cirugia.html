@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<style>body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;padding-top:72px}h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400}header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:72px;box-shadow:0 2px 20px rgba(0,0,0,.06)}nav a{text-decoration:none;color:var(--text);font-size:13px;letter-spacing:.04em;transition:color .2s;position:relative}nav a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--teal);transition:width .3s}nav a:hover::after{width:100%}.header-cta{background:var(--navy);color:#fff!important;padding:10px 22px;border-radius:2px;font-size:12px!important;letter-spacing:.1em!important;text-transform:uppercase;transition:background .2s!important}.header-cta::after{display:none!important}.page-hero{background:var(--navy);padding:72px 10% 64px;position:relative;overflow:hidden}.page-hero::before{content:'';position:absolute;top:-120px;right:-120px;width:500px;height:500px;border-radius:50%;border:1px solid rgba(255,255,255,.05)}.page-hero h1{font-size:clamp(44px,6vw,72px);color:#fff;font-weight:300;line-height:1.05;margin-bottom:20px}section{padding:72px 10%}.que-es p{font-size:15px;line-height:1.9;color:var(--text-muted);margin-bottom:16px;max-width:760px}@media (max-width:1024px){.proceso-steps{grid-template-columns:repeat(2,1fr)}.otras-grid{grid-template-columns:repeat(3,1fr)}}@media (max-width:768px){section{padding:56px 6%}.page-hero{padding:56px 6% 48px}.proceso-steps{grid-template-columns:1fr}.step-connector{display:none}.otras-grid{grid-template-columns:repeat(2,1fr)}.cta-final{flex-direction:column}.cta-phones{width:100%}.btn-phone{width:100%;justify-content:center}nav{display:none}}</style>
+<style>body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;padding-top:72px}h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400}header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:72px;box-shadow:0 2px 20px rgba(0,0,0,.06)}nav a{text-decoration:none;color:var(--text);font-size:13px;letter-spacing:.04em;transition:color .2s;position:relative}nav a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--teal);transition:width .3s}nav a:hover::after{width:100%}.header-cta{background:var(--navy);color:#fff!important;padding:10px 22px;border-radius:2px;font-size:12px!important;letter-spacing:.1em!important;text-transform:uppercase;transition:background .2s!important}.header-cta::after{display:none!important}.page-hero{background:var(--navy);padding:72px 10% 64px;position:relative;overflow:hidden}.page-hero::before{content:'';position:absolute;top:-120px;right:-120px;width:500px;height:500px;border-radius:50%;border:1px solid rgba(255,255,255,.05)}.page-hero h1{font-size:clamp(44px,6vw,72px);color:#fff;font-weight:300;line-height:1.05;margin-bottom:20px}section{padding:72px 10%}.que-es p{font-size:15px;line-height:1.9;color:var(--text-muted);margin-bottom:16px;max-width:760px}@media (max-width:1024px){.que-es-grid{grid-template-columns:1fr}.proceso-steps{grid-template-columns:repeat(2,1fr)}.otras-grid{grid-template-columns:repeat(3,1fr)}}@media (max-width:768px){section{padding:56px 6%}.page-hero{padding:56px 6% 48px}.proceso-steps{grid-template-columns:1fr}.step-connector{display:none}.otras-grid{grid-template-columns:repeat(2,1fr)}.cta-final{flex-direction:column}.cta-phones{width:100%}.btn-phone{width:100%;justify-content:center}nav{display:none}}</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -29,10 +29,10 @@
     },
     {
       "@type": "Question",
-      "name": "¿Cuándo hay que quitar los cordales?",
+      "name": "¿Cuándo hay que quitar los cordales (muelas del juicio)?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Cuando causan dolor, infecciones de repetición, caries en el diente vecino o alteraciones en la mordida."
+        "text": "Cuando están mal posicionados, causan dolor o infecciones de repetición, caries en el diente vecino o alteraciones en la mordida."
       }
     },
     {
@@ -66,7 +66,7 @@
 <body>
 <header>
   <div class="logo">
-    <a href="index.html" style="text-decoration:none">
+    <a href="index.html" style="text-decoration:none;display:flex;flex-direction:column">
       <span class="logo-main">Dental Carriches</span>
       <span class="logo-sub">Clínica Dental · Madrid · Talavera</span>
     </a>
@@ -93,9 +93,12 @@
 </section>
 
 <section class="que-es reveal">
-  <span class="section-label">¿Qué es?</span>
+  <div class="que-es-grid">
+    <div><span class="section-label">¿Qué es?</span>
   <h2 class="section-title">Cirugía Bucal en <em>Dental Carriches</em></h2>
-  <p>La cirugía bucal abarca extracciones simples y complejas, extracción de cordales, cirugía periapical, frenectomías, biopsias y regeneración ósea guiada previa a implantes.</p><p>Todos los procedimientos son realizados por la Dra. Carmen López Carriches bajo anestesia local, con los protocolos de esterilización más exigentes para garantizar tu seguridad y una recuperación rápida.</p>
+  <p>La Cirugía Bucal abarca extracciones simples y complejas, extracción de cordales, cirugía periapical, frenectomías, biopsias, extirpación de quistes y regeneración ósea guiada previa a implantes.</p><p>Todos los procedimientos son realizados por especialistas en Cirugía Bucal bajo anestesia local, con las mejores técnicas para proporcionar un buen postoperatorio y una recuperación rápida.</p></div>
+    <img src="img/cirugia.webp" alt="Cirugía bucal — Dental Carriches" class="que-es-img" loading="lazy">
+  </div>
 </section>
 
 <section class="proceso">
@@ -107,11 +110,11 @@
       <div class='step-connector'></div>
     </div><div class="step reveal">
       <div class="step-num">02</div>
-      <h3>Anestesia local</h3><p>Protocolo avanzado para que no sientas nada durante la intervención.</p>
+      <h3>Anestesia local</h3><p>Aplicamos la técnica más indolora, alcanzando la profundidad de anestesia necesaria para que no sientas nada durante la intervención.</p>
       <div class='step-connector'></div>
     </div><div class="step reveal">
       <div class="step-num">03</div>
-      <h3>Intervención</h3><p>Procedimiento con instrumental de precisión por nuestra especialista.</p>
+      <h3>Intervención</h3><p>Procedimiento con las técnicas y el instrumental más avanzados y la pericia de nuestros especialistas.</p>
       <div class='step-connector'></div>
     </div><div class="step reveal">
       <div class="step-num">04</div>
@@ -127,8 +130,8 @@
       <button class="faq-q">¿Duele sacar una muela del juicio?<svg class="faq-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
       <div class="faq-a"><p>La extracción no duele con anestesia. El postoperatorio tiene molestias 2–3 días controlables con medicación.</p></div>
     </div><div class="faq-item">
-      <button class="faq-q">¿Cuándo hay que quitar los cordales?<svg class="faq-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      <div class="faq-a"><p>Cuando causan dolor, infecciones de repetición, caries en el diente vecino o alteraciones en la mordida.</p></div>
+      <button class="faq-q">¿Cuándo hay que quitar los cordales (muelas del juicio)?<svg class="faq-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <div class="faq-a"><p>Cuando están mal posicionados, causan dolor o infecciones de repetición, caries en el diente vecino o alteraciones en la mordida.</p></div>
     </div><div class="faq-item">
       <button class="faq-q">¿Cuánto tarda la recuperación?<svg class="faq-icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
       <div class="faq-a"><p>2–3 días para extracciones simples. 4–7 días para cordales incluidos.</p></div>
