@@ -166,7 +166,26 @@
   </div>
   <span style="font-size:11px;color:rgba(255,255,255,0.2)">© 2026 Dental Carriches</span>
 </footer>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <p class="cookie-text">
+    Usamos cookies propias y de terceros (Google Maps, Google Fonts) para mejorar tu experiencia y analizar el uso de la web. Puedes aceptarlas o rechazar las no esenciales.
+    <a href="politica-cookies.html">Política de cookies</a> · <a href="politica-privacidad.html">Privacidad</a>
+  </p>
+  <div class="cookie-btns">
+    <button class="cookie-reject" onclick="rejectCookies()">Solo esenciales</button>
+    <button class="cookie-accept" onclick="acceptCookies()">Aceptar todas</button>
+  </div>
+</div>
 <script>
+  function setCookie(name,value,days){const d=new Date();d.setTime(d.getTime()+(days*24*60*60*1000));document.cookie=name+'='+value+';expires='+d.toUTCString()+';path=/'}
+  function getCookie(name){const ca=document.cookie.split(';');for(let c of ca){c=c.trim();if(c.startsWith(name+'='))return c.substring(name.length+1)}return null}
+  function acceptCookies(){setCookie('cookie_consent','accepted',365);hideBanner()}
+  function rejectCookies(){setCookie('cookie_consent','rejected',365);hideBanner()}
+  function hideBanner(){document.getElementById('cookieBanner').classList.remove('visible')}
+  window.addEventListener('load',()=>{if(!getCookie('cookie_consent')){setTimeout(()=>document.getElementById('cookieBanner').classList.add('visible'),800)}})
+
   const reveals=document.querySelectorAll('.reveal');
   const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target)}})},{threshold:0.08});
   reveals.forEach(el=>obs.observe(el));
