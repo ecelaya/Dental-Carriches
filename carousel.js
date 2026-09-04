@@ -1,9 +1,12 @@
+const AUTOPLAY_DELAY = 4000;
+
 function initCarousel(carousel) {
   const slides = carousel.querySelectorAll('.carousel-slide');
   const dots = carousel.querySelectorAll('.carousel-dot');
   const prevBtn = carousel.querySelector('.carousel-prev');
   const nextBtn = carousel.querySelector('.carousel-next');
   let idx = 0;
+  let timer = null;
 
   function show(i) {
     idx = (i + slides.length) % slides.length;
@@ -11,11 +14,29 @@ function initCarousel(carousel) {
     dots.forEach((d, j) => d.classList.toggle('active', j === idx));
   }
 
-  if (prevBtn) prevBtn.addEventListener('click', () => show(idx - 1));
-  if (nextBtn) nextBtn.addEventListener('click', () => show(idx + 1));
-  dots.forEach((d, j) => d.addEventListener('click', () => show(j)));
+  function stopAutoplay() {
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    if (slides.length > 1) timer = setInterval(() => show(idx + 1), AUTOPLAY_DELAY);
+  }
+
+  function goTo(i) {
+    show(i);
+    startAutoplay();
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(idx - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(idx + 1));
+  dots.forEach((d, j) => d.addEventListener('click', () => goTo(j)));
+
+  carousel.addEventListener('mouseenter', stopAutoplay);
+  carousel.addEventListener('mouseleave', startAutoplay);
 
   show(0);
+  startAutoplay();
 }
 
 document.querySelectorAll('[data-carousel]').forEach(initCarousel);
