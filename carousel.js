@@ -37,6 +37,8 @@ function initCarousel(carousel) {
 
   show(0);
   startAutoplay();
+
+  carousel.carouselGoTo = goTo;
 }
 
 document.querySelectorAll('[data-carousel]').forEach(initCarousel);
@@ -50,7 +52,9 @@ document.querySelectorAll('[data-sede-btn]').forEach(btn => {
     carousels.forEach(c => { c.style.transition = 'opacity .25s ease'; c.style.opacity = '0'; });
     setTimeout(() => {
       carousels.forEach(c => {
-        c.style.display = c.getAttribute('data-sede') === sede ? '' : 'none';
+        const isTarget = c.getAttribute('data-sede') === sede;
+        c.style.display = isTarget ? '' : 'none';
+        if (isTarget && c.carouselGoTo) c.carouselGoTo(0);
       });
       requestAnimationFrame(() => {
         carousels.forEach(c => { c.style.opacity = '1'; });
