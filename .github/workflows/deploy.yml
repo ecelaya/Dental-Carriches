@@ -23,21 +23,19 @@ jobs:
         env:
           SFTP_HOST: home460724416.1and1-data.host
           SFTP_PORT: 22
-          SFTP_USER: u72604236
-          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+          SFTP_USER: ${{ secrets.SFTP_USER }}
+          LFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
           REMOTE_DIR: /app460724435
         run: |
-          lftp -e "
-            set sftp:auto-confirm yes;
-            set net:max-retries 3;
-            set net:timeout 30;
-            open -u \"$SFTP_USER\",\"$SFTP_PASSWORD\" -p $SFTP_PORT sftp://$SFTP_HOST;
-            mirror --reverse --verbose --parallel=4 \
-              --exclude-glob .git/ \
-              --exclude-glob .github/ \
-              --exclude-glob .claude/ \
-              --exclude-glob .gitignore \
-              --exclude-glob README.md \
-              ./ \"$REMOTE_DIR\";
-            bye
-          "
+          # Quita espacios o saltos de línea que se hayan colado al guardar el secreto
+          SFTP_USER="$(printf '%s' "$SFTP_USER" | tr -d '[:space:]')"
+
+          # Usuario como argumento propio y contraseña leída de LFTP_PASSWORD:
+          # así lftp no tiene que interpretar comillas ni comas en ninguno de los dos.
+          lftp -u "$SFTP_USER" --env-password -p "$SFTP_PORT" "sftp://$SFTP_HOST" <<EOF
+          set sftp:auto-confirm yes
+          set net:max-retries 3
+          set net:timeout 30
+          mirror --reverse --verbose --parallel=4 --exclude-glob .git/ --exclude-glob .github/ --exclude-glob .claude/ --exclude-glob .gitignore --exclude-glob README.md ./ $REMOTE_DIR
+          bye
+          EOF
