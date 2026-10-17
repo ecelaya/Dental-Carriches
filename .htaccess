@@ -1,0 +1,13 @@
+Options -Indexes
+RewriteEngine On
+
+# www a sin www (y a https en el mismo salto)
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+# HTTP a HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# URLs que no existen: muestra 404.html y responde 404
+ErrorDocument 404 /404.html
